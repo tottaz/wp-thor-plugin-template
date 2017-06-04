@@ -8,7 +8,7 @@ License: GPLv2 or later
 
 == Description ==
 
-This plugin kickstarts your development of a WordPress plguin, creates and admin page made from bootstrap, and comes with code using Easy Digital Doneload software licensing.
+This plugin kickstarts your development of a WordPress plguin, creates and admin page made from bootstrap, and comes with licenses code using Easy Digital Doneload software licensing.
   
 == Features ==
 

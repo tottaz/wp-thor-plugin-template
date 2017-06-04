@@ -31,8 +31,8 @@ if (!class_exists('ThorPluginTempAdmin')) {
 			// Plugin Settings
 			add_action('admin_init', array($this, 'thor_plugin_template_settings_init'));
 
-			add_action('wpmu_new_blog', array($this, 'thor_on_new_blog'), 10, 6); 		
-			add_action('activate_blog', array($this, 'thor_on_new_blog'), 10, 6);
+			add_action('wpmu_new_blog', array($this, 'thor_plugin_template_on_new_blog'), 10, 6); 		
+			add_action('activate_blog', array($this, 'thor_plugin_template_on_new_blog'), 10, 6);
 			
 			add_filter('admin_footer_text', array($this, 'ctp_admin_footer'));
 		}
@@ -137,7 +137,7 @@ if (!class_exists('ThorPluginTempAdmin')) {
 		 *
 		 * @param int $blog_id Blog ID.
 		 */
-		function thor_on_new_blog( $blog_id, $user_id, $domain, $path, $site_id, $meta ) {
+		function thor_plugin_template_on_new_blog( $blog_id, $user_id, $domain, $path, $site_id, $meta ) {
 
 			global $wpdb;
 
@@ -162,6 +162,37 @@ if (!class_exists('ThorPluginTempAdmin')) {
 		 */
 		function _thor_plugin_template_activate() {
 		    // Create new table if necessary
+
+// This is sample code on creating your own tables
+
+//			global $wpdb;
+
+//			if(!ThorFCMAdmin::thor_fcm_check_table()) {
+
+//				$charset_collate = '';
+				
+//				if (!empty($wpdb->charset)) {
+//					$charset_collate .= sprintf(' DEFAULT CHARACTER SET %s', $wpdb->charset);
+//				}
+//				if (!empty($wpdb->collate)) {
+//					$charset_collate .= ' COLLATE ' . $wpdb->collate;
+//				}		
+
+//				$sql = sprintf( "CREATE TABLE IF NOT EXISTS `%s%s` (
+//		            `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+//		            `regid` text,
+//		            `serialno` text,
+//		            `os` text,
+//		           	`model` text,
+//		           	`send_msg` int,
+//		            `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+//		            PRIMARY KEY (`id`)
+//		        ) $charset_collate;", $wpdb->prefix, 'thor_fcm_users' );
+//
+//				$wpdb->query($sql);								
+//			}
+
+		    // Create new table if necessary
 			add_option ( 'thor_cbt','post');
 			// Activate
 			do_action( 'thor_plugin_template_activate' );
@@ -176,15 +207,12 @@ if (!class_exists('ThorPluginTempAdmin')) {
 		 */	
 		public function thor_plugin_template_head(){
 
-				wp_enqueue_style( 'thor-admin-style', THORPLUGINTEMPLATE_PLUGIN_URL . '/app/views/css/style.css' );
-				wp_enqueue_style( 'thor-font-awesome', THORPLUGINTEMPLATE_PLUGIN_URL . '/app/views/css/font-awesome.css' );
-				wp_enqueue_style( 'thor-bootstrap-style', THORPLUGINTEMPLATE_PLUGIN_URL . '/app/views/css/bootstrap.css' );
-				wp_enqueue_style( 'thor-bootstrap-theme-style', THORPLUGINTEMPLATE_PLUGIN_URL . '/app/views/css/bootstrap-theme.css' );
+				wp_enqueue_style( 'thor-plugin-template-admin-style', THORPLUGINTEMPLATE_PLUGIN_URL . '/app/views/css/style.css' );
+				wp_enqueue_style( 'thor-plugin-template-font-awesome', THORPLUGINTEMPLATE_PLUGIN_URL . '/app/views/css/font-awesome.css' );
+				wp_enqueue_style( 'thor-plugin-template-bootstrap-style', THORPLUGINTEMPLATE_PLUGIN_URL . '/app/views/css/bootstrap.css' );
+				wp_enqueue_style( 'thor-plugin-template-bootstrap-theme-style', THORPLUGINTEMPLATE_PLUGIN_URL . '/app/views/css/bootstrap-theme.css' );
 
-				wp_enqueue_script( 'thor-bootstrap-js', THORPLUGINTEMPLATE_PLUGIN_URL . '/app/views/js/bootstrap.js' );;
-
-				wp_localize_script( 'thor-admin-js', 'thor_base_url', get_site_url() );
-				wp_localize_script( 'thor-admin-js', 'thor_admin_url', get_admin_url() . 'admin.php?page=thor_plugin_template_admin' );
+				wp_enqueue_script( 'thor-plugin-template-bootstrap-js', THORPLUGINTEMPLATE_PLUGIN_URL . '/app/views/js/bootstrap.js' );;
 		}
 
 		/**
@@ -195,7 +223,7 @@ if (!class_exists('ThorPluginTempAdmin')) {
 		 * @return void
 		 */	
 		public function thor_plugin_template_admin_menu(){
-			add_menu_page ( 'WP Thor Plugin Temp', 'WP Thor Plugin Temp', 'manage_options', 'thor_plugin_template_admin', array($this, 'thor_plugin_template_admin'), plugins_url( 'wp-thor-plugin_template/app/views/images/noimage.png' ), 6 );
+			add_menu_page ( 'Thor Plugin Template', 'Thor Plugin Template', 'manage_options', 'thor_plugin_template_admin', array($this, 'thor_plugin_template_admin'), plugins_url( 'wp-thor-plugin-template/app/views/images/plugin_template.png' ), 6 );
 		}
 		
 		/**
@@ -251,7 +279,7 @@ if (!class_exists('ThorPluginTempAdmin')) {
 		 */	
 		function thor_plugin_template_settings_init(  ) {
 
-// here goes your setting code
+// here goes your setting code - this is an example
 
 	//			register_setting('thor-cbt-settings', 'thor_plugin_template_settings' );
 
