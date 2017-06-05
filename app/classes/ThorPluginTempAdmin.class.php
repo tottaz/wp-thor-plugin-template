@@ -123,7 +123,12 @@ if (!class_exists('ThorPluginTempAdmin')) {
 		        }   
 		    }
 
-			delete_option ( 'thor_cbt');
+
+		    // Delete Licenses Key
+			delete_option('edd_thor_ptemp_license_key' );
+			delete_option('edd_thor_ptemp_license_status' );
+			
+			delete_option ( 'thor_ptemp');
 			do_action( 'thor_plugin_template_deactivate' );
 		}
 
@@ -193,7 +198,7 @@ if (!class_exists('ThorPluginTempAdmin')) {
 //			}
 
 		    // Create new table if necessary
-			add_option ( 'thor_cbt','post');
+			add_option ( 'thor_ptemp','post');
 			// Activate
 			do_action( 'thor_plugin_template_activate' );
 		}
@@ -609,7 +614,7 @@ if (!class_exists('ThorPluginTempAdmin')) {
 		function edd_thor_ptemp_activate_license() {
 
 			// listen for our activate button to be clicked
-			if( isset( $_POST['edd_license_activate'] ) ) {
+			if( isset( $_POST['edd_thor_ptemp_license_activate'] ) ) {
 
 				// run a quick security check
 			 	if( ! check_admin_referer( 'edd_thor_ptemp_nonce', 'edd_thor_ptemp_nonce' ) )
@@ -698,7 +703,7 @@ if (!class_exists('ThorPluginTempAdmin')) {
 		function edd_thor_ptemp_deactivate_license() {
 
 			// listen for our activate button to be clicked
-			if( isset( $_POST['edd_license_deactivate'] ) ) {
+			if( isset( $_POST['edd_thor_ptemp_license_deactivate'] ) ) {
 
 				// run a quick security check
 			 	if( ! check_admin_referer( 'edd_thor_ptemp_nonce', 'edd_thor_ptemp_nonce' ) )
