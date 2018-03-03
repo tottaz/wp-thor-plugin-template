@@ -19,8 +19,7 @@ if (!class_exists('ThorPluginTempAdmin')) {
 			// Admin Menu
 			add_action('admin_menu', array($this, 'thor_plugin_template_admin_menu'));
 
-			// Software Licensing and Updates
-			add_action('admin_init', array($this, 'edd_sl_thor_ptemp_plugin_updater'));
+			// Software Licensing
 			add_action('admin_init', array($this, 'edd_thor_ptemp_register_option'));
 
 			// Activate, check or deactivate Licenses
@@ -411,7 +410,7 @@ if (!class_exists('ThorPluginTempAdmin')) {
 						echo "<div class=\"social-links alignleft\"><i>Created by <a href='http://thunderbeardesign.com'>ThunderBear Design</a></i>				
 						<a href=\"http://twitter.com/tbearmarketing\" class=\"twitter\" target=\"_blank\"><span
 						class=\"dashicons dashicons-twitter\"></span></a>
-						<a href=\"fb.me/thunderbeardesign\" class=\"facebook\"
+						<a href=\"https://www.facebook.com/thunderbeardesign\" class=\"facebook\"
 				   target=\"_blank\"><span class=\"dashicons dashicons-facebook\"></span></a>
 						<a href=\"https://thunderbeardesign.com/feed/\" class=\"rss\" target=\"_blank\"><span
 						class=\"dashicons dashicons-rss\"></span></a>
@@ -544,25 +543,6 @@ if (!class_exists('ThorPluginTempAdmin')) {
 			}
 
 			$this->debug_info = $debug_info;
-		}
-
-		//
-		// Licensing and update functions
-		//
-		public function edd_sl_thor_ptemp_plugin_updater() {
-
-			// retrieve our license key from the DB
-			$license_key = trim( get_option( 'edd_thor_ptemp_license_key' ) );
-
-			// setup the updater
-			$edd_updater = new EDD_SL_Plugin_Updater( THORPLUGINTEMPLATE_SL_STORE_URL, __FILE__, array(
-					'version' 	=> '1.0', 				// current version number
-					'license' 	=> $license_key, 		// license key (used get_option above to retrieve from DB)
-					'item_name' => THORPLUGINTEMPLATE_SL_ITEM_NAME, 	// name of this plugin
-					'author' 	=> 'ThunderBear Design',  // author of this plugin
-					'beta'		=> false
-				)
-			);
 		}
 
 		/**

@@ -1,9 +1,9 @@
 === WP Custom Post Template === 
 Contributors: ThunderBear Design
 Tags: wordpress plugin template, wp plugin template
-Requires at least: 4.x
-Tested up to: 4.7
-Stable tag: 1.1
+Requires at least: 4.8
+Tested up to: 4.9.4
+Stable tag: 1.3
 License: GPLv2 or later
 
 == Description ==
