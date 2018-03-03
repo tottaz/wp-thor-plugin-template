@@ -5,6 +5,7 @@ Requires at least: 4.8
 Tested up to: 4.9.4
 Stable tag: 1.3
 License: GPLv2 or later
+Plugin URI: https://thunderbeardesign.com/downloads/wp-thor-plugin-template
 
 == Description ==
 

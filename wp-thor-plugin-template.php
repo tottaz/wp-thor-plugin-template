@@ -1,13 +1,13 @@
 <?php
-/*
-Plugin Name: WP Thor Plugin Template
-Plugin URI:
-Description: This is a template for building WordPress plugins.
-Version: 1.3
-Author: ThunderBear Design
-Author URI: http://thunderbeardesign.com
-Build: 1.3
-*/
+/**
+* Plugin Name: WP Thor Plugin Template
+* Plugin URI: https://thunderbeardesign.com/downloads/wp-thor-plugin-template
+* Description: This is a template for building WordPress plugins.
+* Version: 1.3
+* Author: ThunderBear Design
+* Author URI: http://thunderbeardesign.com
+* Build: 1.3
+**/
 
 // Prevent direct access to this file.
 if ( ! defined( 'ABSPATH' ) ) {
